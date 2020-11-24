@@ -52,12 +52,11 @@ Power BI Training Material & Guides
 
 ---
 
-***1.2.1 Calculated Tables***
+***1.2.2 Calculated Columns***
 
-> this is a block of subtext
+> Create a calculated column.
 
-    Calculated Table 1 =
-      {“A”, “B”, “C”}
+    Full Name = CONCATENATE(DimCustomer[FirstName] & “ “, DimCustomer[LastName])
 
 
 - 2020 <a href="https://www.theta.co.nz" target="_blank">Theta</a>.
