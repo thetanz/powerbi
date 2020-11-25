@@ -20,7 +20,7 @@ Power BI Training Material & Guides
 > DAX expression that creates a table with one column (Figure 13). 
 
     Calculated Table 1 =
-      {“A”, “B”, “C”}
+    {"A", "B", "C"}
       
 > Expression creates a calculated table using the table constructor and the DATE() function.
 
@@ -31,10 +31,10 @@ Power BI Training Material & Guides
 
     Calculated Table 3 =
     {
-        ( “A”, 1.5, DATE(2017, 1, 1), CURRENCY(199.99) ),       
-        ( “B”, 2.5, DATE(2017, 1, 2), CURRENCY(249.99) ),      
-        ( “C”, 3.5, DATE(2017, 1, 3), CURRENCY(299.99) )
-    }
+            ( “A”, 1.5, DATE(2017, 1, 1), CURRENCY(199.99) ),       
+            ( “B”, 2.5, DATE(2017, 1, 2), CURRENCY(249.99) ),      
+            ( “C”, 3.5, DATE(2017, 1, 3), CURRENCY(299.99) )
+        }
 
 > DAX expression in Figure 16 shows the following:
     
@@ -42,11 +42,10 @@ Power BI Training Material & Guides
     SUMMARIZECOLUMNS (
       DimCustomer[CustomerKey]
       , FILTER(
-        VALUES(‘DimGeography’[EnglishCountryRegionName])
-        , ‘DimGeography’[EnglishCountryRegionName] = “Australia”)
-        , “Customer Full Name”, CONCATENATEX(DimCustomer, DimCustomer[FirstName] & “ “ &
-        DimCustomer[LastName])
-          , “Sales Amount”, SUM(FactInternetSales[SalesAmount]) 
+			VALUES(‘DimGeography’[EnglishCountryRegionName])
+			, ‘DimGeography’[EnglishCountryRegionName] = “Australia”)
+        , “Customer Full Name”, CONCATENATEX(DimCustomer, DimCustomer[FirstName] & “ “ & DimCustomer[LastName])
+		, “Sales Amount”, SUM(FactInternetSales[SalesAmount]) 
     )
 
 
@@ -56,8 +55,8 @@ Power BI Training Material & Guides
 
 > Create a calculated column.
 
-    Full Name = CONCATENATE(DimCustomer[FirstName] & “ “, DimCustomer[LastName])
-<!---note in the pdf it has as above but in the screenshot it shows " " , not sure if this will make a difference.-->
+    Full Name = CONCATENATE(DimCustomer[FirstName] & " ", DimCustomer[LastName])
+
 ---
 
 ***1.2.3 Measures***
@@ -73,12 +72,12 @@ Power BI Training Material & Guides
 > DAX expression calculating cumulative sum  of sales, Month-to-Date (MTD).
 
     Sales Amount MTD =
-        TOTALMTD([Sales Amount], ‘DimDate’[Date])
+        TOTALMTD([Sales Amount], 'DimDate'[Date])
 
 > DAX expression calculating cumulative sum  of sales, Year-to-Date (YTD).
 
     Sales Amount YTD = 
-    TOTALYTD([Sales Amount], ‘DimDate’[Date])
+    TOTALYTD([Sales Amount], 'DimDate'[Date])
     
 ---
 
@@ -115,15 +114,15 @@ Power BI Training Material & Guides
 
 > Create a Date table using DAX.
         
-        Date with DAX =
-            ADDCOLUMNS(CALENDAR(DATE(2007,1,1), DATE(2020,12,31))
-            , “DateKey”, VALUE(FORMAT([Date], “YYYYMMDD”))
-            , “Month”, FORMAT([Date], “MMMM”)
-            , “Month Short”, FORMAT([Date], “MMM”)
-            , “MonthOrder”, FORMAT([Date], “MM”) 
-            , “Qyarter”, CONCATENATE(“Qtr “, QUARTER([Date]))
-            , “Year”, YEAR([Date])
-           )
+    Date with DAX =
+        ADDCOLUMNS(CALENDAR(DATE(2007,1,1), DATE(2020,12,31))
+                , "DateKey", VALUE(FORMAT([Date], "YYYYMMDD"))
+                , "Month", FORMAT([Date], "MMMM")
+                , "Month Short", FORMAT([Date], "MMM")
+                , "MonthOrder", FORMAT([Date], "MM") 
+                , "Qyarter", CONCATENATE("Qtr ", QUARTER([Date]))
+                , "Year", YEAR([Date])
+            )
 
 ---
 
