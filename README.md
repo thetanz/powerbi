@@ -12,7 +12,7 @@ title="Theta Cybersecurity" alt="Theta Cybersecurity">
 Power BI Training Material & Guides
 
 <!---add link to the power BI pdf -->
-[Power BI PDF](https://theta.co.nz/cyber) 
+[Power BI for Intermediates: part two](https://theta.co.nz/cyber) 
 
 ---
 ***1.2.1 Calculated Tables***
@@ -125,5 +125,6 @@ Power BI Training Material & Guides
             )
 
 ---
-
+© 2020 Theta Systems Limited. All rights reserved. No part of this guide may be
+reproduced or used in any manner without written permission of Theta Systems Limited.
 - 2020 <a href="https://www.theta.co.nz" target="_blank">Theta</a>.
