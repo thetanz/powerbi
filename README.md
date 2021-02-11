@@ -125,6 +125,5 @@ Power BI Training Material & Guides
             )
 
 ---
-© 2020 Theta Systems Limited. All rights reserved. No part of this guide may be
-reproduced or used in any manner without written permission of Theta Systems Limited.
-- 2020 <a href="https://www.theta.co.nz" target="_blank">Theta</a>.
+
+- 2021 <a href="https://www.theta.co.nz" target="_blank">Theta</a>.
