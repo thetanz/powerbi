@@ -31,9 +31,9 @@ Power BI Training Material & Guides
 
     Calculated Table 3 =
     {
-            ( “A”, 1.5, DATE(2017, 1, 1), CURRENCY(199.99) ),       
-            ( “B”, 2.5, DATE(2017, 1, 2), CURRENCY(249.99) ),      
-            ( “C”, 3.5, DATE(2017, 1, 3), CURRENCY(299.99) )
+            ( "A", 1.5, DATE(2017, 1, 1), CURRENCY(199.99) ),       
+            ( "B", 2.5, DATE(2017, 1, 2), CURRENCY(249.99) ),      
+            ( "C", 3.5, DATE(2017, 1, 3), CURRENCY(299.99) )
         }
 
 > DAX expression in Figure 16 shows the following:
@@ -43,9 +43,9 @@ Power BI Training Material & Guides
       DimCustomer[CustomerKey]
       , FILTER(
 			VALUES(‘DimGeography’[EnglishCountryRegionName])
-			, ‘DimGeography’[EnglishCountryRegionName] = “Australia”)
-        , “Customer Full Name”, CONCATENATEX(DimCustomer, DimCustomer[FirstName] & “ “ & DimCustomer[LastName])
-		, “Sales Amount”, SUM(FactInternetSales[SalesAmount]) 
+			, ‘DimGeography’[EnglishCountryRegionName] = "Australia")
+        , "Customer Full Name", CONCATENATEX(DimCustomer, DimCustomer[FirstName] & " " & DimCustomer[LastName])
+		, "Sales Amount", SUM(FactInternetSales[SalesAmount]) 
     )
 
 
@@ -88,25 +88,25 @@ Power BI Training Material & Guides
        let
             Source = List.Dates(#date(2010, 1, 1), Duration.Days(Duration.From(#date(2014, 12, 31) - 
         #date(2010, 1, 1))), #duration(1, 0, 0, 0) ),
-            #”Converted to Table” = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues. Error),
-            #”Renamed Columns” = Table.RenameColumns(#”Converted to Table”,{{“Column1”, “Date”}}),
-            #”Added Custom” = Table.AddColumn(#”Renamed Columns”, “DateKey”, each Text.
-        Combine({Date.ToText([Date], “yyyy”), Date.ToText([Date], “MM”), Date.ToText([Date], “dd”)})),
-            #”Changed Type” = Table.TransformColumnTypes(#”Added Custom”,{{“Date”, type date},
-        {“DateKey”, Int64.Type}}),
-            #”Year Column Added” = Table.AddColumn(#”Changed Type”, “Year”, each Date.Year([Date])),
-            #”Quarter Column Added” = Table.AddColumn(#”Year Column Added”, “Quarter”, each “Qtr
+            #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues. Error),
+            #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
+            #"Added Custom" = Table.AddColumn(#"Renamed Columns", "DateKey", each Text.
+        Combine({Date.ToText([Date], "yyyy"), Date.ToText([Date], "MM"), Date.ToText([Date], "dd")})),
+            #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Date", type date},
+        {"DateKey", Int64.Type}}),
+            #"Year Column Added" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date])),
+            #"Quarter Column Added" = Table.AddColumn(#"Year Column Added", "Quarter", each "Qtr
         “&Text.From(Date.QuarterOfYear([Date]))),
-            #”MonthOrder Column Added” = Table.AddColumn(#”Quarter Column Added”, “MonthOrder”, 
-        each Date.ToText([Date], “MM”)),
-            #”Short Month Column Added” = Table.AddColumn(#”MonthOrder Column Added”, “Month 
-        Short”, each Date.ToText([Date], “MMM”)),
-            #”Month Column Added” = Table.AddColumn(#”Short Month Column Added”, “Month”, each 
+            #"MonthOrder Column Added" = Table.AddColumn(#"Quarter Column Added", "MonthOrder", 
+        each Date.ToText([Date], "MM")),
+            #"Short Month Column Added" = Table.AddColumn(#"MonthOrder Column Added", "Month 
+        Short", each Date.ToText([Date], "MMM")),
+            #"Month Column Added" = Table.AddColumn(#"Short Month Column Added", "Month", each 
         Date.MonthName([Date])),
-            #”Changed Columns Type” = Table.TransformColumnTypes(#”Month Column Added”,{{“Year”,
-        Int64.Type}, {“MonthOrder”, Int64.Type}})
+            #"Changed Columns Type" = Table.TransformColumnTypes(#"Month Column Added",{{"Year",
+        Int64.Type}, {"MonthOrder", Int64.Type}})
         in
-            #”Changed Columns Type”
+            #"Changed Columns Type"
 
 ---
 
