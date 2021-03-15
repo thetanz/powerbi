@@ -42,8 +42,8 @@ Power BI Training Material & Guides
     SUMMARIZECOLUMNS (
       DimCustomer[CustomerKey]
       , FILTER(
-			VALUES(‘DimGeography’[EnglishCountryRegionName])
-			, ‘DimGeography’[EnglishCountryRegionName] = "Australia")
+			VALUES(DimGeography[EnglishCountryRegionName])
+			, DimGeography[EnglishCountryRegionName] = "Australia")
         , "Customer Full Name", CONCATENATEX(DimCustomer, DimCustomer[FirstName] & " " & DimCustomer[LastName])
 		, "Sales Amount", SUM(FactInternetSales[SalesAmount]) 
     )
