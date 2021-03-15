@@ -88,11 +88,9 @@ Power BI Training Material & Guides
 let
 Source = List.Dates(#date(2010, 1, 1), Duration.Days(Duration.From(#date(2014, 12, 31) -
 #date(2010, 1, 1))), #duration(1, 0, 0, 0) ),
-#"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues,
-Error),
+#"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
 #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
-#"Added Custom" = Table.AddColumn(#"Renamed Columns", "DateKey", each Text,
-Combine({Date.ToText([Date], "yyyy"), Date.ToText([Date], "MM"), Date.ToText([Date], "dd")})),
+#"Added Custom" = Table.AddColumn(#"Renamed Columns", "DateKey", each Text.Combine({Date.ToText([Date], "yyyy"), Date.ToText([Date], "MM"), Date.ToText([Date], "dd")})),
 #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Date", type date},
 {"DateKey", Int64.Type}}),
 #"Year Column Added" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date])),
