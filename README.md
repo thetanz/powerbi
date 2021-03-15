@@ -119,7 +119,7 @@ in
                 , "Month", FORMAT([Date], "MMMM")
                 , "Month Short", FORMAT([Date], "MMM")
                 , "MonthOrder", FORMAT([Date], "MM") 
-                , "Qyarter", CONCATENATE("Qtr ", QUARTER([Date]))
+                , "Quarter", CONCATENATE("Qtr ", QUARTER([Date]))
                 , "Year", YEAR([Date])
             )
 
