@@ -85,28 +85,29 @@ Power BI Training Material & Guides
 
 > Generate a Date table using Power Query (M) language.
        
-       let
-            Source = List.Dates(#date(2010, 1, 1), Duration.Days(Duration.From(#date(2014, 12, 31) - 
-        #date(2010, 1, 1))), #duration(1, 0, 0, 0) ),
-            #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues. Error),
-            #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
-            #"Added Custom" = Table.AddColumn(#"Renamed Columns", "DateKey", each Text.
-        Combine({Date.ToText([Date], "yyyy"), Date.ToText([Date], "MM"), Date.ToText([Date], "dd")})),
-            #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Date", type date},
-        {"DateKey", Int64.Type}}),
-            #"Year Column Added" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date])),
-            #"Quarter Column Added" = Table.AddColumn(#"Year Column Added", "Quarter", each "Qtr
-        “&Text.From(Date.QuarterOfYear([Date]))),
-            #"MonthOrder Column Added" = Table.AddColumn(#"Quarter Column Added", "MonthOrder", 
-        each Date.ToText([Date], "MM")),
-            #"Short Month Column Added" = Table.AddColumn(#"MonthOrder Column Added", "Month 
-        Short", each Date.ToText([Date], "MMM")),
-            #"Month Column Added" = Table.AddColumn(#"Short Month Column Added", "Month", each 
-        Date.MonthName([Date])),
-            #"Changed Columns Type" = Table.TransformColumnTypes(#"Month Column Added",{{"Year",
-        Int64.Type}, {"MonthOrder", Int64.Type}})
-        in
-            #"Changed Columns Type"
+let
+Source = List.Dates(#date(2010, 1, 1), Duration.Days(Duration.From(#date(2014, 12, 31) -
+#date(2010, 1, 1))), #duration(1, 0, 0, 0) ),
+#"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues,
+Error),
+#"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
+#"Added Custom" = Table.AddColumn(#"Renamed Columns", "DateKey", each Text,
+Combine({Date.ToText([Date], "yyyy"), Date.ToText([Date], "MM"), Date.ToText([Date], "dd")})),
+#"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Date", type date},
+{"DateKey", Int64.Type}}),
+#"Year Column Added" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date])),
+#"Quarter Column Added" = Table.AddColumn(#"Year Column Added", "Quarter", each "Qtr
+"&Text.From(Date.QuarterOfYear([Date]))),
+#"MonthOrder Column Added" = Table.AddColumn(#"Quarter Column Added", "MonthOrder",
+each Date.ToText([Date], "MM")),
+#"Short Month Column Added" = Table.AddColumn(#"MonthOrder Column Added", "Month
+Short", each Date.ToText([Date], "MMM")),
+#"Month Column Added" = Table.AddColumn(#"Short Month Column Added", "Month", each
+Date.MonthName([Date])),
+#"Changed Columns Type" = Table.TransformColumnTypes(#"Month Column Added",{{"Year",
+Int64.Type}, {"MonthOrder", Int64.Type}})
+in
+#"Changed Columns Type"
 
 ---
 
