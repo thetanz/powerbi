@@ -17,7 +17,7 @@ Power BI Training Material & Guides
 ---
 ***1.2.1 Calculated Tables***
 
-> DAX expression that creates a table with one column (Figure 13). 
+> DAX expression that creates a table with one column. 
 
     Calculated Table 1 =
     {"A", "B", "C"}
@@ -36,7 +36,7 @@ Power BI Training Material & Guides
             ( "C", 3.5, DATE(2017, 1, 3), CURRENCY(299.99) )
         }
 
-> DAX expression in Figure 16 shows the following:
+> DAX expression shows the following:
     
     Australian Customers Sales =
     SUMMARIZECOLUMNS (
