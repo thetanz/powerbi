@@ -124,5 +124,4 @@ in
             )
 
 ---
-
-- 2021 <a href="https://www.theta.co.nz" target="_blank">Theta</a>.
+[Theta](https://www.theta.co.nz/cyber)
